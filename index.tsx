@@ -39,6 +39,7 @@ function refresh_voice_state(enabled: boolean) {
                 self_video: false,
                 flags: 0
             });
+            console.log("[FakeDeafen] voice state updated to", enabled ? "fake deafen" : "normal");
         } catch (error) {
             console.error("[FakeDeafen] failed to update voice state:", error);
         }
@@ -105,9 +106,15 @@ export default definePlugin({
 
     start() {
         const wsModule = findByProps("getSocket");
-        if (!wsModule) return;
+        if (!wsModule) {
+            console.log("[FakeDeafen] ws module not found")
+            return;
+        }
         const socket = wsModule.getSocket();
-        if (!socket) return;
+        if (!socket) {
+            console.log("[FakeDeafen] socket not found")
+            return;
+        }
         
         // default send function
         originalSend = socket.send;
