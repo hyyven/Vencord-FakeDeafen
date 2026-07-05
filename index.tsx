@@ -15,11 +15,11 @@ function refresh_voice_state(enabled: boolean) {
     let caca = 0;
 
     if (!wsModule) {
-        console.log("[FakeDeafen] WebSocket Gateway not found");
+        console.error("[FakeDeafen] WebSocket Gateway not found");
         caca += 1;
     }
     if (!SelectedChannelStore) {
-        console.log("[FakeDeafen] SelectedChannelStore not found");
+        console.error("[FakeDeafen] SelectedChannelStore not found");
         caca += 1;
     }
     if (caca > 0) return;
@@ -107,12 +107,12 @@ export default definePlugin({
     start() {
         const wsModule = findByProps("getSocket");
         if (!wsModule) {
-            console.log("[FakeDeafen] ws module not found")
+            console.error("[FakeDeafen] ws module not found")
             return;
         }
         const socket = wsModule.getSocket();
         if (!socket) {
-            console.log("[FakeDeafen] socket not found")
+            console.error("[FakeDeafen] socket not found")
             return;
         }
         
@@ -143,7 +143,7 @@ export default definePlugin({
 
     patches: [
         {
-            find: ".DISPLAY_NAME_STYLES_COACHMARK)",
+            find: "#{intl::USER_PROFILE_ACCOUNT_POPOUT_BUTTON_A11Y_LABEL}",
             predicate: () => Settings.store.showButton,
             replacement: {
                 match: /children:\[(?=[^}]*accountContainerRef)/,
