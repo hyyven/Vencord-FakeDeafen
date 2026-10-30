@@ -1,3 +1,5 @@
+# 30 October 2026: <span style="color:orange">STILL WORKING but the logo on the "plugin user" side is not showing. Other people still see it though.</span> 
+
 # Vencord-FakeDeafen
 Adds a button and a keybind to fake deafen yourself in voice channels. When enabled, you appear deafened and/or muted to others, but you can still hear and speak.
 
